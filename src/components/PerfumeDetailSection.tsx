@@ -4,6 +4,7 @@ import { stars } from '@/data/perfumes'
 import { productMessage, waLink } from '@/lib/whatsapp'
 import { WhatsAppIcon } from '@/components/PerfumeCard'
 import { cn } from '@/lib/utils'
+import { assetUrl } from '@/lib/assets'
 
 export function PerfumeDetailSection({ perfume, index }: { perfume: Perfume; index: number }) {
   const reverse = index % 2 === 1
@@ -36,7 +37,7 @@ export function PerfumeDetailSection({ perfume, index }: { perfume: Perfume; ind
           {perfume.video ? (
             <video
               className="float-anim h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              src={`/assets/video/${perfume.video}`}
+              src={assetUrl(`assets/video/${perfume.video}`)}
               poster={perfume.img}
               autoPlay
               muted

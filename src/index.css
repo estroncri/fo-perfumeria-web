@@ -1,0 +1,178 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 18px;
+
+  --background: #07070a;
+  --background-2: #0c0c12;
+  --panel: #11111a;
+  --panel-2: #16161f;
+  --line: rgba(212, 175, 55, 0.18);
+
+  --gold: #d4af37;
+  --gold-soft: #f0d986;
+  --gold-bright: #fbe9b0;
+
+  --foreground: #f4efe3;
+  --muted-foreground: #a9a293;
+  --whatsapp: #25d366;
+
+  --card: var(--panel);
+  --card-foreground: var(--foreground);
+  --primary: var(--gold);
+  --primary-foreground: #1a1306;
+  --secondary: var(--panel);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--panel);
+  --accent: var(--gold-soft);
+  --accent-foreground: #1a1306;
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--gold);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-2: var(--background-2);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-line: var(--line);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-bright: var(--gold-bright);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-whatsapp: var(--whatsapp);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Jost', system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background:
+      radial-gradient(1200px 700px at 50% -10%, #18130a 0%, transparent 60%),
+      radial-gradient(900px 600px at 100% 100%, #120f08 0%, transparent 55%),
+      var(--background);
+    overflow-x: hidden;
+  }
+}
+
+.gold-text {
+  background: linear-gradient(120deg, var(--gold-bright), var(--gold) 40%, #9d7d23 70%, var(--gold-soft));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 220% 50%; }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  50% { transform: translateY(-14px) rotate(-1deg) scale(1.015); }
+}
+.float-anim {
+  animation: floaty 7s ease-in-out infinite;
+}
+
+@keyframes spotlight {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes wapulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  100% { box-shadow: 0 0 0 22px rgba(37, 211, 102, 0); }
+}
+.wa-pulse {
+  animation: wapulse 2.2s ease-out infinite;
+}
+
+@keyframes scrolldot {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(14px); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ===== Hero (WebGPU) ===== */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+.fade-in-subtitle {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+@keyframes explore-btn-in {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+.explore-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 2.5rem;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gold-soft);
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  animation: explore-btn-in 0.6s ease-out forwards;
+}
+.explore-arrow {
+  display: flex;
+  animation: bounce-arrow 1.8s ease-in-out infinite;
+}
+@keyframes bounce-arrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}

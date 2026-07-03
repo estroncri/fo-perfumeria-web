@@ -1,0 +1,57 @@
+========================================
+  FO PERFUMERÍA — Plantilla web
+========================================
+
+Cómo verla:
+- Doble clic en "index.html" y se abre en tu navegador.
+  (Funciona en celular, tablet y computadora — es responsive.)
+
+----------------------------------------
+1) PONER TU NÚMERO DE WHATSAPP
+----------------------------------------
+Abre el archivo:  js/script.js
+Arriba del todo, cambia esta línea:
+
+    const WHATSAPP_NUMBER = "573000000000";
+
+Pon tu número en formato internacional, SOLO números:
+código de país + número.  Ejemplos:
+    Colombia:  57 + 3001234567   ->  "573001234567"
+    México:    52 + 5512345678   ->  "525512345678"
+
+¡Listo! Todos los botones de WhatsApp (flotante, contacto y de
+cada colonia) usarán ese número automáticamente.
+
+----------------------------------------
+2) PONER TUS VIDEOS DEL PERFUME FLOTANDO
+----------------------------------------
+a) Guarda cada video (formato .mp4) dentro de la carpeta:
+       assets/video/
+   Recomendado: video corto, en bucle, sin sonido, vertical.
+
+b) En js/script.js, en cada colonia cambia  video:null
+   por el nombre de tu archivo. Ejemplo, para Sauvage:
+
+       video:"sauvage.mp4"
+
+   El video se mostrará en bucle automáticamente en lugar de
+   la imagen. Si lo dejas en null, sigue mostrando la imagen.
+
+----------------------------------------
+3) AGREGAR / QUITAR COLONIAS
+----------------------------------------
+Todo el catálogo está en la lista PERFUMES dentro de js/script.js.
+Copia un bloque, cambia los datos (name, brand, family, rating,
+tagline, img, video) y listo.
+
+family debe ser:  Frescos | Amaderados | Dulces
+(así funcionan los filtros de arriba)
+
+----------------------------------------
+Archivos
+----------------------------------------
+index.html        -> la página
+css/styles.css    -> diseño y animaciones
+js/script.js      -> número de WhatsApp + catálogo (lo que editas)
+assets/img/       -> imágenes de las colonias
+assets/video/     -> aquí pones tus videos
